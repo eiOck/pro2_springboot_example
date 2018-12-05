@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Seznam zdrojů</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<table>
+<nav class="navigation">
+    <ul>
+        <li><a href="/">Seznam zdrojů</a></li>
+        <li><a href="/sources">Nový zdroj</a></li>
+    </ul>
+</nav>
+<table class="table-list">
     <thead>
         <th>Název</th>
         <th>Zdroj</th>
     </thead>
     <tbody>
+    <tr th:if="${sources.empty}">
+        <td colspan="2">Nebyly nalezeny žádné záznamy.</td>
+    </tr>
         <tr th:each="source : ${sources}">
             <td><span th:text="${source.getName()}"> Název </span></td>
             <td><span th:text="${source.getSource()}"> Zdroj </span></td>
